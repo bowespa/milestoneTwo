@@ -1,63 +1,100 @@
 import { Link, useNavigate } from "react-router-dom";
-//import "./Navbar.css";
-import { Button, IconButton, Box, AppBar, Toolbar, Typography, Container } from "@mui/material";
+import "./Navbar.css";
+import {
+  Button,
+  IconButton,
+  Box,
+  AppBar,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { color, fontFamily } from "@mui/system";
-
+// import { useEffect } from "react";
 
 const Navbar = () => {
-
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/")
+    navigate("/");
     window.location.reload();
   };
 
+  const pointer = { cursor: "pointer" };
+
+  // useEffect(() => {
+  //   if (!localStorage.getItem("token")) {
+  //     navigate("/");
+  //   }
+  // }, []);
+
+  // const handleLogout = () => {
+  //   localStorage.removeItem("token");
+  //     navigate("/");
+  //     console.log(localStorage.removeItem("token"))
+  // };
+
   return (
-    <Box sx={{ display: 'flex' }}>
-      <AppBar component="nav" position="static" color="secondary">
+    <Box sx={{ display: "flex", mb: 2 }}>
+      <AppBar position="static" color="secondary" component="nav">
         <Toolbar>
           <Typography
             variant="h2"
+            color="primary"
             sx={{
               flexGrow: 1,
-              display: { xs: 'none', sm: 'block' },
+              display: "block",
               fontFamily: "Poppins",
-              fontWeight: 700,
+              fontWeight: "700",
             }}
           >
-            <Link to="/" style={{ textDecoration: "none" }}>Citrus.</Link>
+            <Link to="/">Citrus.</Link>
           </Typography>
           <Typography
-            variant="h6"
+            variant="h5"
             sx={{
-              display: { xs: 'none', sm: 'block' },
+              display: "inline-block",
               fontFamily: "Poppins",
             }}
           >
-            <Link to="/showProp" color="primary" underline="none">All Properties</Link>
+            <Button className="link" size="large">
+              <Link to="/showProp">All Properties</Link>
+            </Button>
           </Typography>
           <Typography
-            variant="h6"
+            variant="h5"
             sx={{
-              display: { xs: 'none', sm: 'block' },
+              display: "inline-block",
               fontFamily: "Poppins",
             }}
           >
-            <Link to="/addNewProp" color="primary" underline="none">Add New Property</Link>
+            <Button className="link" size="large">
+              <Link to="/addNewProp">Add New Property</Link>
+            </Button>
           </Typography>
-
-          <IconButton
-            className="link"
-            variant="text"
-            size="large"
-            edge="end"
-            onClick={handleLogout}
+          <Typography
+            variant="h5"
+            sx={{
+              display: "inline-block",
+              fontFamily: "Poppins",
+            }}
           >
-            <LogoutIcon />
+            <Button className="link" size="large">
+              <Link to="/" onClick={handleLogout}>
+                Logout
+              </Link>
+            </Button>
+          </Typography>
+          <IconButton sx={{ pointer }}>
+            <LogoutIcon
+              color="primary"
+              className="link"
+              variant="text"
+              size="medium"
+              end="end"
+              onClick={handleLogout}
+              sx={{ pointer }}
+            />
           </IconButton>
-
         </Toolbar>
       </AppBar>
     </Box>
@@ -65,5 +102,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-
