@@ -1,11 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
-import "./Navbar.css";
-import { Button, IconButton, Box, AppBar, Toolbar } from "@mui/material";
+//import "./Navbar.css";
+import { Button, IconButton, Box, AppBar, Toolbar, Typography, Container } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
-// import { useEffect } from "react";
-
-
-
+import { color, fontFamily } from "@mui/system";
 
 
 const Navbar = () => {
@@ -17,50 +14,50 @@ const Navbar = () => {
     window.location.reload();
   };
 
-  // useEffect(() => {
-  //   if (!localStorage.getItem("token")) {
-  //     navigate("/");
-  //   }
-  // }, []);
-
-  // const handleLogout = () => {
-  //   localStorage.removeItem("token");
-  //     navigate("/");
-  //     console.log(localStorage.removeItem("token"))
-  // };
-
   return (
-    <Box sx={{ flexGrow: 1, mb: 2 }}>
-      <AppBar position="static" color="secondary">
+    <Box sx={{ display: 'flex' }}>
+      <AppBar component="nav" position="static" color="secondary">
         <Toolbar>
-          <div className="logo">
-            <Link to="/">Citrus.</Link>
-          </div>
-          <nav className="item">
-            <ul className="ul">
-              <li>
-                <Button className="link" variant="text" size="large" edge="end">
-                  <Link to="/showProp">All Properties</Link>
-                </Button>
-              </li>
-              <li>
-                <Button className="link" variant="text" size="large" edge="end">
-                  <Link to="/addNewProp">Add New Property</Link>
-                </Button>
-              </li>
-              <li>
-                <IconButton
-                  className="link"
-                  variant="text"
-                  size="large"
-                  edge="end"
-                  onClick={handleLogout}
-                >
-                  <LogoutIcon />
-                </IconButton>
-              </li>
-            </ul>
-          </nav>
+          <Typography
+            variant="h2"
+            sx={{
+              flexGrow: 1,
+              display: { xs: 'none', sm: 'block' },
+              fontFamily: "Poppins",
+              fontWeight: 700,
+            }}
+          >
+            <Link to="/" style={{ textDecoration: "none" }}>Citrus.</Link>
+          </Typography>
+          <Typography
+            variant="h6"
+            sx={{
+              display: { xs: 'none', sm: 'block' },
+              fontFamily: "Poppins",
+            }}
+          >
+            <Link to="/showProp" color="primary" underline="none">All Properties</Link>
+          </Typography>
+          <Typography
+            variant="h6"
+            sx={{
+              display: { xs: 'none', sm: 'block' },
+              fontFamily: "Poppins",
+            }}
+          >
+            <Link to="/addNewProp" color="primary" underline="none">Add New Property</Link>
+          </Typography>
+
+          <IconButton
+            className="link"
+            variant="text"
+            size="large"
+            edge="end"
+            onClick={handleLogout}
+          >
+            <LogoutIcon />
+          </IconButton>
+
         </Toolbar>
       </AppBar>
     </Box>
@@ -68,3 +65,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
