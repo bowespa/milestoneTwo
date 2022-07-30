@@ -1,7 +1,10 @@
 # Citrus Property Management
 > A MERN stack application for managing rental properties.
 
-![Citrus Preview](public/images/screenshot.png)
+![Login Page](public/images/Login.png)
+![Citrus Preview](public/images/MainPage.png)
+![Properties](public/images/AllProp.png)
+![Add Property](public/images/NewProp.png)
 
 ## Table of context
 * [Description](#discrition)
